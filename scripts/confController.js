@@ -8,10 +8,6 @@ app.controller('configController', function($scope, $cookies, $http) {
 		angular.element(mainDiv).removeClass("main_big");
 
 
-
-
-
-
 	// write change to cookie
 	$scope.noOfEpg_change = function() {
 		var noOfEpgValue = document.getElementById('noOfEpg').value;
@@ -33,6 +29,14 @@ app.controller('configController', function($scope, $cookies, $http) {
 
 
 
+
+
+
+
+
+
+
+
 	// MAIN: Program starts here
 	$scope.addRecordingConfigs = {};
 	$http.get("/api/dvr/config/grid")
@@ -43,9 +47,6 @@ app.controller('configController', function($scope, $cookies, $http) {
 				$scope.addRecordingConfigs[item.name] = item.uuid;
 			});
 		});
-
-
-
 
 	}); // controller ends
 

@@ -1,44 +1,3 @@
-// custom filter for translating weekday-numbers to text
-app.filter('weekdays',function(){
-	return function(input)
-	{
-		var newString = input.map(function(x){ return { 1:'Mon', 2:'Tue', 3:'Wed', 4:'Thu', 5:'Fri', 6:'Sat', 7:'Sun'}[x]}).toString().replace(/,/g,'-');
-		if (newString == 'Mon-Tue-Wed-Thu-Fri-Sat-Sun') 
-			return 'All';
-		else
-			return newString;
-	}
-});
-
-
-app.controller('dvrEditingController', function($scope, $http) {
-
-	$scope.addRecordingChannels = {};
-	$scope.addRecordingConfigs = {};
-	$scope.priorities = { Default: 6, Important: 0, High: 1, Normal: 2, Low: 3, Unimportant: 4};
-	$http.get("/api/channel/list")
-		.then(function (response)
-			{
-				angular.forEach(response.data.entries, function (item) {
-					$scope.addRecordingChannels[item.val] = item.key;
-				});
-			})
-			$http.get("/api/dvr/config/grid")
-				.then(function (response2)
-				{
-					angular.forEach(response2.data.entries, function (item) {
-						if (item.name == "") { item.name = "(Default profile)" };
-						$scope.addRecordingConfigs[item.name] = item.uuid;
-					});
-				});
-	var now = new Date();
-	$scope.addRecordingStartDate = { value: now };
-	$scope.addRecordingStartTime = { value: now };
-	$scope.addRecordingStopDate =  { value: now };
-	$scope.addRecordingStopTime =  { value: now };
-});
-
-
 // controller for loading a dvr-page
 app.controller('dvrController', function($scope, $http, $filter) {
 	var sideNavDiv = document.getElementsByClassName("sidenav")[0];
@@ -93,22 +52,6 @@ app.controller('dvrController', function($scope, $http, $filter) {
 						});
 	}
 
-
-	// generic function to make a POST to an API 											// should support returning data
-	httpPost = function(url, dataRaw, successMessage) {
-		var data = http_build_query(dataRaw);
-		var headers = {headers: {'Content-Type': 'application/x-www-form-urlencoded'}};
-		$http.post(url, data, headers)
-		.then(function (response)
-		{
-			if (response.data) {
-				$scope.showInfobox(successMessage);
-			}
-		}, function (response)
-		{
-			alert('Sorry, an error occurred. API response was : "(' + response.status + ')"');
-		});
-	}
 
 	// called by clicking details overlay
 	$scope.hideDetails = function () {
@@ -678,10 +621,35 @@ app.controller('dvrController', function($scope, $http, $filter) {
 
 	// MAIN: Program starts here
 	loadDvrData();
-
-
 	}); // controller ends
 
 
 
+// controller for editing functions on dvr-page
+app.controller('dvrEditingController', function($scope, $http) {
+
+	$scope.addRecordingChannels = {};
+	$scope.addRecordingConfigs = {};
+	$scope.priorities = { Default: 6, Important: 0, High: 1, Normal: 2, Low: 3, Unimportant: 4};
+	$http.get("/api/channel/list")
+		.then(function (response)
+			{
+				angular.forEach(response.data.entries, function (item) {
+					$scope.addRecordingChannels[item.val] = item.key;
+				});
+			})
+			$http.get("/api/dvr/config/grid")
+				.then(function (response2)
+				{
+					angular.forEach(response2.data.entries, function (item) {
+						if (item.name == "") { item.name = "(Default profile)" };
+						$scope.addRecordingConfigs[item.name] = item.uuid;
+					});
+				});
+	var now = new Date();
+	$scope.addRecordingStartDate = { value: now };
+	$scope.addRecordingStartTime = { value: now };
+	$scope.addRecordingStopDate =  { value: now };
+	$scope.addRecordingStopTime =  { value: now };
+});
 
