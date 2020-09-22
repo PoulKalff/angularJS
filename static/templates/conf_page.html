@@ -1,55 +1,65 @@
-<div class='subpage_main'>
+<div class='subpage_main row'>
 
-	<h5 class="mb-0 config_header">User Interface:</h5>
-	<div class="config_section">
-		<label>Number of EPG-records to fetch for each channel:	<input id="noOfEpg" max="99" style="width:60px" type="number" ng-change="noOfEpg_change()" name="NoOfEpgRecords" ng-model="noOfEpgRecordsToGet"></label>
-		<label>Prefered Recording Profile: <select id="prefRecProfile" style="width:200px" ng-change="dvrConfig_change()" ng-options="key for (key , value) in addRecordingConfigs" ng-model="dvrConfig" ></select></label>
+	<div class="col-6">
+		<h5 class="mb-0 config_header">User Interface:</h5>
+		<div class="config_section">
+			<label>Number of EPG-records to fetch for each channel:	<input id="noOfEpg" max="99" style="width:60px" type="number" ng-change="noOfEpg_change()" name="NoOfEpgRecords" ng-model="noOfEpgRecordsToGet"></label>
+			<label>Prefered Recording Profile: <select id="prefRecProfile" style="width:200px" ng-change="dvrConfig_change()" ng-options="key for (key , value) in addRecordingConfigs" ng-model="dvrConfig" ></select></label>
+			<label>Sort Channels alphabetically: <input id="sortChannels" style="transform: scale(1.5); margin: 5px" type="checkbox" ng-change="sortChannels_change()" ng-model="sortChannels" ></input></label>
+		</div>
 
+		<h5 class="mb-0 config_header">Category 3:</h5>
+		<div class="config_section">
+			<label>Item 1:	<input max="99" style="width:60px" type="number" name="NoOfEpgRecords"></label>
+			<label>Item 2:	<input max="99" style="width:60px" type="number" name="NoOfEpgRecords"></label>
+			<label>Item 3:	<input max="99" style="width:60px" type="number" name="NoOfEpgRecords"></label>
+		</div>
+
+
+		<h5 class="mb-0 config_header">Category 4:</h5>
+		<div class="config_section">
+			<label>Item 1:	<input max="99" style="width:60px" type="number" name="NoOfEpgRecords"></label>
+			<label>Item 2:	<input max="99" style="width:60px" type="number" name="NoOfEpgRecords"></label>
+			<label>Item 3:	<input max="99" style="width:60px" type="number" name="NoOfEpgRecords"></label>
+		</div>
 	</div>
 
 
+	<div class="col-6">
+		<h5 class="mb-0 config_header">Base Settings:</h5>
+		<div class="config_section">
+			<label>Tvheadend Server Name:				<input type="text" style="width:200px" name="tvheadendServerName"></label>
+			<label>Prefer picons over channel icons		<input style="width:200px" type="text" name="none"></label>
+			<label>Channel icon path					<input style="width:200px" type="text" name="none"></label>
+			<label>Channel icon name scheme				<input style="width:200px" type="text" name="none"></label>
+			<label>Picon path							<input style="width:200px" type="text" name="none"></label>
+			<label>Picon name scheme					<input style="width:200px" type="text" name="none"></label>
+			<label>Conditional Access					<input style="width:200px" type="text" name="none"></label>
+			<label>Default language						<input style="width:200px" type="text" name="none"></label>
+			<label>Server name							<input style="width:200px" type="text" name="none"></label>
+			<label>Realm name							<input style="width:200px" type="text" name="none"></label>
+			<label>Authentication type					<input style="width:200px" type="text" name="none"></label>
+			<label>Digest hash type						<input style="width:200px" type="text" name="none"></label>
+			<label>Cookie expiration (days)				<input style="width:200px" type="text" name="none"></label>
+			<label>Ticket expiration (seconds)			<input style="width:200px" type="text" name="none"></label>
+			<label>PROXY protocol & X-Forwarded-For		<input style="width:200px" type="text" name="none"></label>
+			<label>CORS origin							<input style="width:200px" type="text" name="none"></label>
+			<label>HDHomerun IP Address					<input style="width:200px" type="text" name="none"></label>
+			<label>Local IP Address						<input style="width:200px" type="text" name="none"></label>
+			<label>Local Socket Port Number				<input style="width:200px" type="text" name="none"></label>
+			<label>HTTP User Agent						<input style="width:200px" type="text" name="none"></label>
+			<label>IPTV threads							<input style="width:200px" type="text" name="none"></label>
+			<label>DSCP/TOS for streaming				<input style="width:200px" type="text" name="none"></label>
+			<label>Descrambler buffer (TS packets)		<input style="width:200px" type="text" name="none"></label>
+			<label>Packet backlog						<input style="width:200px" type="text" name="none"></label>
+			<label>DVB scan files path					<input style="width:200px" type="text" name="none"></label>
+			<label>Parse HbbTV info						<input style="width:200px" type="text" name="none"></label>
+			<label>Update time							<input style="width:200px" type="text" name="none"></label>
+			<label>Enable NTP driver					<input style="width:200px" type="text" name="none"></label>
+			<label>Update tolerance (ms)				<input style="width:200px" type="text" name="none"></label>
+		</div>
+		
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	<h5 class="mb-0 config_header">Category 2:</h5>
-	<div class="config_section">
-		<label>Item 1:	<input max="99" style="width:60px" type="number" name="NoOfEpgRecords"></label>
-		<label>Item 2:	<input max="99" style="width:60px" type="number" name="NoOfEpgRecords"></label>
-		<label>Item 3:	<input max="99" style="width:60px" type="number" name="NoOfEpgRecords"></label>
 	</div>
-
-
-	<h5 class="mb-0 config_header">Category 3:</h5>
-	<div class="config_section">
-		<label>Item 1:	<input max="99" style="width:60px" type="number" name="NoOfEpgRecords"></label>
-		<label>Item 2:	<input max="99" style="width:60px" type="number" name="NoOfEpgRecords"></label>
-		<label>Item 3:	<input max="99" style="width:60px" type="number" name="NoOfEpgRecords"></label>
-	</div>
-
-
-	<h5 class="mb-0 config_header">Category 4:</h5>
-	<div class="config_section">
-		<label>Item 1:	<input max="99" style="width:60px" type="number" name="NoOfEpgRecords"></label>
-		<label>Item 2:	<input max="99" style="width:60px" type="number" name="NoOfEpgRecords"></label>
-		<label>Item 3:	<input max="99" style="width:60px" type="number" name="NoOfEpgRecords"></label>
-	</div>
-
-
-
 </div>
