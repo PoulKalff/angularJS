@@ -67,25 +67,25 @@ function http_build_query( arrayIn ) {
 }
 
 
-// generic function to make a POST to an API 											// should support returning data
-function httpPost(url, dataRaw, successMessage) {
-	var data = http_build_query(dataRaw);
-	var headers = {headers: {'Content-Type': 'application/x-www-form-urlencoded'}};
-	$http.post(url, data, headers)
-	.then(function (response)
-	{
-		if (response.data) {
-			$scope.showInfobox(successMessage);
-		}
-	}, function (response)
-	{
-		alert('Sorry, an error occurred. API response was : "(' + response.status + ')"');
-	});
-}
-
-
 // controller for all common functions
 app.controller("commonController", function ($scope, $http, $interval, $timeout, $cookies) {
+
+
+	// generic function to make a POST to an API 											// should support returning data
+	$scope.httpPost = function(url, dataRaw, successMessage) {
+		var data = http_build_query(dataRaw);
+		var headers = {headers: {'Content-Type': 'application/x-www-form-urlencoded'}};
+		$http.post(url, data, headers)
+		.then(function (response)
+		{
+			if (response.data) {
+				$scope.showInfobox(successMessage);
+			}
+		}, function (response)
+		{
+			alert('Sorry, an error occurred. API response was : "(' + response.status + ')"');
+		});
+	}
 
 
 	// show an infobox for x seconds, then remove it

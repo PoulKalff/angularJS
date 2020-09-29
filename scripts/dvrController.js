@@ -357,9 +357,9 @@ app.controller('dvrController', function($scope, $http, $filter) {
 	$scope.stopButton = function() {
 		angular.forEach($scope.selectedItems, function (item) {
 			if (item.status === 'Running')
-				httpPost('/api/dvr/entry/cancel', { 'uuid': item.uuid }, 'Stopped recording of "' + item.disp_title + '"')
+				$scope.httpPost('/api/dvr/entry/cancel', { 'uuid': item.uuid }, 'Stopped recording of "' + item.disp_title + '"')
 			else
-				httpPost('/api/dvr/entry/cancel', { 'uuid': item.uuid }, 'Cancelled recording of "' + item.disp_title + '"')
+				$scope.httpPost('/api/dvr/entry/cancel', { 'uuid': item.uuid }, 'Cancelled recording of "' + item.disp_title + '"')
 		});
 		// reload data
 		loadDvrData();
@@ -409,9 +409,9 @@ app.controller('dvrController', function($scope, $http, $filter) {
 	$scope.moveDvrButton = function() {
 		angular.forEach($scope.selectedItems, function (item) {
 			if (item.status  === "Completed OK" || item.status === "Forced OK") {
-				httpPost('/api/dvr/entry/move/failed', { 'uuid': item.uuid }, 'Changed status to FAILED for "' + item.disp_title + '"')
+				$scope.httpPost('/api/dvr/entry/move/failed', { 'uuid': item.uuid }, 'Changed status to FAILED for "' + item.disp_title + '"')
 			} else {
-				httpPost('/api/dvr/entry/move/finished', { 'uuid': item.uuid }, 'Changed status to FINISHED for "' + item.disp_title + '"')
+				$scope.httpPost('/api/dvr/entry/move/finished', { 'uuid': item.uuid }, 'Changed status to FINISHED for "' + item.disp_title + '"')
 			}
 			// reload data
 			loadDvrData();
@@ -432,9 +432,9 @@ app.controller('dvrController', function($scope, $http, $filter) {
 		if (confirm("Are you sure?")) {
 			angular.forEach($scope.selectedItems, function (item) {
 				if (item.status === 'Scheduled for recording') {
-					httpPost('/api/dvr/entry/cancel', { 'uuid': item.uuid }, 'Cancelled "' + item.disp_title)
+					$scope.httpPost('/api/dvr/entry/cancel', { 'uuid': item.uuid }, 'Cancelled "' + item.disp_title)
 				} else {
-					httpPost('/api/dvr/entry/remove', { 'uuid': item.uuid }, 'Removed "' + item.disp_title)
+					$scope.httpPost('/api/dvr/entry/remove', { 'uuid': item.uuid }, 'Removed "' + item.disp_title)
 				}
 			})
 		}
@@ -579,7 +579,7 @@ app.controller('dvrController', function($scope, $http, $filter) {
 	$scope.deleteTimerButton = function() {
 		if (confirm("Are you sure?")) {
 			angular.forEach($scope.selectedTimers, function (item) {
-				httpPost('/api/idnode/delete', { 'uuid': item.uuid }, 'Deleted timer "' + item.name + '"')
+				$scope.httpPost('/api/idnode/delete', { 'uuid': item.uuid }, 'Deleted timer "' + item.name + '"')
 			})
 		}
 		loadDvrData();

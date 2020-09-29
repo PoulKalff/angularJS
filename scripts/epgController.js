@@ -241,97 +241,53 @@ app.controller("epgController", function ($scope, $http, $interval, $timeout, $c
 
 	// does not work
 	$scope.cancelScheduledRecording = function() {
-		var url = '/api/dvr/entry/stop';
-		var data = http_build_query({ "uuid": $scope.selectedEpgUnit['data']['dvrUuid'] });
-		var headers = {headers: {'Content-Type': 'application/x-www-form-urlencoded'}};
-		$http.post(url, data, headers)
-		.then(function (response)
-		{
-			if (response.data) {
-				var gridPos = getGridPosition();
-				$scope.updateChannelEpg(gridPos[0]);
-				var recordButton = document.getElementById('recordProgram');
-				var recordSeriesButton = document.getElementById('recordSeries');
-				recordButton.innerText = 'Record';
-				angular.element(recordSeriesButton).css("visibility", "visible");
-				$scope.showInfobox('Scheduled recording was canceled');
-			}
-		}, function (response)
-		{
-				alert('Sorry, an error occurred. API response was : "(' + response.status + ')"');
-		});
+		$scope.httpPost('/api/dvr/entry/stop', { "uuid": $scope.selectedEpgUnit['data']['dvrUuid'] }, 'Running recording was stopped')
+		// clean up
+		var gridPos = getGridPosition();
+		$scope.updateChannelEpg(gridPos[0]);
+		var recordButton = document.getElementById('recordProgram');
+		var recordSeriesButton = document.getElementById('recordSeries');
+		recordButton.innerText = 'Record';
+		angular.element(recordSeriesButton).css("visibility", "visible");
 	}
 
 
 	$scope.stopRunningRecording = function() {
-		var url = '/api/dvr/entry/cancel';
-		var data = http_build_query({ "uuid": $scope.selectedEpgUnit['data']['dvrUuid'] });
-		var headers = {headers: {'Content-Type': 'application/x-www-form-urlencoded'}};
-		$http.post(url, data, headers)
-		.then(function (response)
-		{
-			if (response.data) {
-				var gridPos = getGridPosition();
-				$scope.updateChannelEpg(gridPos[0]);
-				var recordButton = document.getElementById('recordProgram');
-				var recordSeriesButton = document.getElementById('recordSeries');
-				recordButton.innerText = 'Record';
-				angular.element(recordSeriesButton).css("visibility", "visible");
-				$scope.showInfobox('Active recording was stopped');
-			}
-		}, function (response)
-		{
-				alert('Sorry, an error occurred. API response was : "(' + response.status + ')"');
-		});
+		$scope.httpPost('/api/dvr/entry/cancel', { "uuid": $scope.selectedEpgUnit['data']['dvrUuid'] }, 'Scheduled recording was canceled')
+		// clean up
+		var gridPos = getGridPosition();
+		$scope.updateChannelEpg(gridPos[0]);
+		var recordButton = document.getElementById('recordProgram');
+		var recordSeriesButton = document.getElementById('recordSeries');
+		recordButton.innerText = 'Record';
+		angular.element(recordSeriesButton).css("visibility", "visible");
 	}
 
 
 	// record a specific program
 	$scope.recordProgram = function() {
-		var url = '/api/dvr/entry/create_by_event';
-		var data = http_build_query({ "event_id": $scope.selectedEpgUnit['data']['eventId'], "config_uuid": $scope.dvrConfig });
-		var headers = {headers: {'Content-Type': 'application/x-www-form-urlencoded'}};
-		$http.post(url, data, headers)
-			.then(function (response)
-			{
-				if (response.data) {
-					var gridPos = getGridPosition();
-					$scope.updateChannelEpg(gridPos[0]);
-					var recordButton = document.getElementById('recordProgram');
-					var recordSeriesButton = document.getElementById('recordSeries');
-					recordButton.innerText = 'Cancel Recording';
-					angular.element(recordSeriesButton).css("visibility", "hidden");
-					$scope.showInfobox('Program was scheduled for recording');
-			}
-			}, function (response)
-			{
-					alert('Sorry, an error occurred. API response was : "(' + response.status + ')"');
-			});
-	};
+		$scope.httpPost('/api/dvr/entry/create_by_event', { "event_id": $scope.selectedEpgUnit['data']['eventId'], "config_uuid": $scope.dvrConfig }, 'Program was scheduled for recording')
+		// clean up
+		var gridPos = getGridPosition();
+		$scope.updateChannelEpg(gridPos[0]);
+		var recordButton = document.getElementById('recordProgram');
+		var recordSeriesButton = document.getElementById('recordSeries');
+		recordButton.innerText = 'Cancel Recording';
+		angular.element(recordSeriesButton).css("visibility", "hidden");
+	}
 
 
 	// create an autorec from a specific program, recording all programs like it
 	$scope.recordSeries = function() {
-		var url = '/api/dvr/autorec/create_by_series';
-		var data = http_build_query({ "event_id": $scope.selectedEpgUnit['data']['eventId'], "config_uuid": $scope.dvrConfig });
-		var headers = {headers: {'Content-Type': 'application/x-www-form-urlencoded'}};
-		$http.post(url, data, headers)
-			.then(function (response)
-			{
-				if (response.data) {
-					var gridPos = getGridPosition();
-					$scope.updateChannelEpg(gridPos[0]);
-					var recordButton = document.getElementById('recordProgram');
-					var recordSeriesButton = document.getElementById('recordSeries');
-					recordButton.innerText = 'Cancel Recording';
-					angular.element(recordSeriesButton).css("visibility", "hidden");
-					$scope.showInfobox('A series was scheduled for recording');
-				}
-			}, function (response)
-			{
-					alert('Sorry, an error occurred. API response was : "(' + response.status + ')"');
-			});
-	};
+		$scope.httpPost('/api/dvr/autorec/create_by_series', { "event_id": $scope.selectedEpgUnit['data']['eventId'], "config_uuid": $scope.dvrConfig }, 'A series was scheduled for recording')
+		// clean up
+		var gridPos = getGridPosition();
+		$scope.updateChannelEpg(gridPos[0]);
+		var recordButton = document.getElementById('recordProgram');
+		var recordSeriesButton = document.getElementById('recordSeries');
+		recordButton.innerText = 'Cancel Recording';
+		angular.element(recordSeriesButton).css("visibility", "hidden");
+	}
 
 
 	$scope.selectContainer = function(epgUnit) {

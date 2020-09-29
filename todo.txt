@@ -1,11 +1,6 @@
 
 GENERAL
 ----------------------------------------------------------------------------------------------
- - move epg-stuff into separate controller
- - use generic POST and GET-functions in old controller
- 	- use generic POST and GET-functions in new controller
- - put common functions in separate .js-file
-
 
 
 
