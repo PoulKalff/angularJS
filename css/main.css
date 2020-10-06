@@ -83,7 +83,6 @@ p {
 	font-size:			x-large;
 }
 
-
 .config_section {
 	width:				100%;
 	background-color:	#4a2626;
@@ -93,17 +92,63 @@ p {
 	padding:			10px;
 }
 
+.config_section fieldset{
+	border:				2px solid gray;
+	padding:			10px;
+	margin-top:			5px;
+	margin-bottom:		5px;
+}
+
+.config_section legend{
+	color:				gray;
+	width:				auto;
+	padding-left:		5px;
+	padding-right:		5px;
+	margin:				0px;
+}
+
+
+
+
+
+
+
+
+
+
+
+.config_section button {
+	margin-bottom:		10px;
+}
+
 .config_section label {
 	font-weight:		bold;
 	width:				100%;	
-}
-
-.config_section input {
-	float:				right;
+	height:				30px;
 }
 
 .config_section select {
 	float:				right;
+	height:				30px;
+	width:				200px;
+}
+
+.config_section input {
+	float:				right;
+	height:				30px;
+}
+
+.config_section input[type=number] {
+	width:				200px;
+}
+
+.config_section input[type=text] {
+	width:				200px;
+}
+
+.config_section input[type=checkbox] {
+	transform:			scale(1.5);
+	margin-right: 		5px;
 }
 
 

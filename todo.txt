@@ -26,8 +26,7 @@ About-page:
 
 Configuration-page:
 ----------------------------------------------------------------------------------------------
-- option to sort Channels in User Interface configuration
-
+- "Sort Channels alphabetically" har ingen funktion
 
 
 

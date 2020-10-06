@@ -38,11 +38,23 @@ app.controller('configController', function($scope, $cookies, $http) {
 
 
 	// MAIN: Program starts here
+	// get cookies
+	var cookieA = $cookies.get('noOfEpgRecordsToGet');
+	if (!angular.isDefined(cookieA)) { cookieA = 15; }
+	$scope.noOfEpgRecordsToGet = parseInt(cookieA);
+	var cookieB = $cookies.get('preferedDvrConfig');
+	$scope.dvrConfig = $cookies.get('preferedDvrConfig');
+	if (!angular.isDefined($scope.dvrConfig)) { 
+		// load first available  config
+		$http.get("/api/dvr/config/grid")
+			.then(function (reply) 	{ $scope.dvrConfig = reply.data.entries[0].uuid; })
+	}
+	// get basic configs
 	$scope.addRecordingConfigs = {};
 	$http.get("/api/dvr/config/grid")
-		.then(function (response2)
+		.then(function (reply)
 		{
-			angular.forEach(response2.data.entries, function (item) {
+			angular.forEach(reply.data.entries, function (item) {
 				if (item.name == "") { item.name = "(Default profile)" };
 				$scope.addRecordingConfigs[item.name] = item.uuid;
 			});
