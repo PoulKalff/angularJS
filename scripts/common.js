@@ -71,7 +71,7 @@ function http_build_query( arrayIn ) {
 app.controller("commonController", function ($scope, $http, $interval, $timeout, $cookies) {
 
 
-	// generic function to make a POST to an API 											// should support returning data
+	// generic function to make a POST to an API. DOES NOT support return of values!
 	$scope.httpPost = function(url, dataRaw, successMessage) {
 		var data = http_build_query(dataRaw);
 		var headers = {headers: {'Content-Type': 'application/x-www-form-urlencoded'}};
@@ -79,7 +79,7 @@ app.controller("commonController", function ($scope, $http, $interval, $timeout,
 		.then(function (response)
 		{
 			if (response.data) {
-				$scope.showInfobox(successMessage);
+				if (successMessage != null) { $scope.showInfobox(successMessage); }
 			}
 		}, function (response)
 		{

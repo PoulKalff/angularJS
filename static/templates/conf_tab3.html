@@ -1,0 +1,88 @@
+<div class='confTab row'>
+
+	<div class="col-6">
+		<h5 class="mb-0 config_header">TV adapters:</h5>
+		<div class="config_section">
+			<ul ng-repeat="x in tvAdapters">
+				<li>{{ x.text }}</li>
+			</ul> 
+		</div>
+
+		<h5 class="mb-0 config_header">Mux Schedulers:</h5>
+		<div class="config_section">
+			<ul ng-repeat="x in schedulers">
+				<li>{{ x.uuid }}</li>
+			</ul> 
+		</div>
+	</div>
+
+	<div class="col-6">
+		<h5 class="mb-0 config_header">Networks:</h5>
+		<div class="config_section">
+			<ul ng-repeat="x in dvbNetworks">
+				<li>{{ x.networkname }}</li>
+			</ul> 
+		</div>
+	</div>
+
+
+	<div class="col-12">
+		<h5 class="mb-0 config_header">Muxes:</h5>
+		<div class="config_section">
+			<table class="confTable table-hover">
+				<thead>
+				  <tr class="">
+					<th>Name</th>
+					<th>Network</th>
+					<th>Enabled</th>
+					<th>Services</th>
+					<th>Channels</th>
+					<th>Scan State</th>
+					<th>Scan Result</th>
+				  </tr>
+				</thead>
+				<tbody>
+				  <tr ng-repeat="x in muxes">
+					<td>{{ x.name }}</td>
+					<td>{{ x.network }}</td>
+					<td>{{ x.enabled }}</td>
+					<td>{{ x.num_svc }}</td>
+					<td>{{ x.num_chn }}</td>
+					<td>{{ x.scan_state }}</td>
+					<td>{{ x.scan_result }}</td>
+				  </tr>
+				</tbody>
+			</table>
+		</div>
+
+		<h5 class="mb-0 config_header">Services:</h5>
+		<div class="config_section">
+			<table class="confTable table-hover">
+				<thead>
+				  <tr class="">
+					<th>Name</th>
+					<th>Network</th>
+					<th>Enabled</th>
+					<th>Channel</th>
+					<th>Priority</th>
+					<th>Encrypted</th>
+				  </tr>
+				</thead>
+				<tbody>
+				  <tr ng-repeat="x in services">
+					<td>{{ x.svcname }}</td>
+					<td>{{ x.network }}</td>
+					<td>{{ x.enabled }}</td>
+					<td>{{ x.channel }}</td>
+					<td>{{ x.priority }}</td>
+					<td>{{ x.encrypted }}</td>
+				  </tr>
+				</tbody>
+			</table>
+   		</div>
+	</div>
+
+</div>
+
+
+

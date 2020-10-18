@@ -1,0 +1,54 @@
+<div class='confTab row'>
+
+	<div class="col-6">
+		<h5 class="mb-0 config_header">Stream Profiles:</h5>
+		<div class="config_section">
+			<ul ng-repeat="x in streamProfiles">
+				<li>{{ x.val }}</li>
+			</ul> 
+		</div>
+	</div>
+
+	<div class="col-6">
+		<h5 class="mb-0 config_header">Codec Profiles:</h5>
+		<div class="config_section">
+			<ul ng-repeat="x in codecProfiles">
+				<li>{{ x.title }}</li>
+			</ul> 
+		</div>
+	</div>
+
+	<div class="col-12">
+		<h5 class="mb-0 config_header">Stream Filters:</h5>
+		<div class="config_section">
+			<table class="confTable table-hover">
+				<thead>
+				  <tr class="">
+					<th>Type</th>
+					<th>Filtertype</th>
+					<th>Language</th>
+					<th>Service</th>
+					<th>Comment</th>
+					<th>Class</th>
+					<th>Index</th>
+					<th>Enabled</th>
+				  </tr>
+				</thead>
+				<tbody>
+				  <tr ng-repeat="x in streamFilters">
+					<td>{{ x.type }}</td>
+					<td>{{ x.filterType }}</td>
+					<td>{{ x.language }}</td>
+					<td>{{ x.service }}</td>
+					<td>{{ x.comment }}</td>
+					<td>{{ x.class }}</td>
+					<td>{{ x.index }}</td>
+					<td>{{ x.enabled }}</td>
+				  </tr>
+				</tbody>
+			</table>
+  		</div>
+	</div>
+
+
+</div>

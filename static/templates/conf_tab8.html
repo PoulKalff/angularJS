@@ -1,0 +1,24 @@
+<div class='confTab row'>
+
+	<div class="col-6">
+		<h5 class="mb-0 config_header">Configuration:</h5>
+		<div class="config_section">
+			<fieldset class="mb-3">
+				<legend>General Settings</legend>
+				<label>Filename (including path)<input 	id=""	type="text"		name=""		 ng-model="logConfig[0].value"></label>
+				<label>Enable syslog			<input 	id="" 	type="checkbox" ng-change="" ng-model="logConfig[1].value" ></label>
+				<label>Debug to syslog			<input 	id="" 	type="checkbox" ng-change="" ng-model="logConfig[2].value" ></label>
+				<label>Debug trace (low-level)	<input 	id="" 	type="checkbox" ng-change="" ng-model="logConfig[3].value" ></label>
+			</fieldset>
+			<fieldset class="mb-3">
+				<legend>Subsystem Output Settings</legend>
+				<label>Debug subsystems			<input 	id=""	type="text"		name=""		 ng-model="logConfig[4].value"></label>
+				<label>Trace subsystems			<input 	id=""	type="text"		name=""		 ng-model="logConfig[5].value"></label>
+			</fieldset>
+			<fieldset class="mb-3">
+				<legend>Miscellaneous Settings</legend>
+				<label>Debug libav log			<input 	id="" 	type="checkbox" ng-change="" ng-model="logConfig[6].value" ></label>
+			</fieldset>
+		</div>
+	</div>
+</div>

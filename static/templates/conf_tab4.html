@@ -1,0 +1,89 @@
+<div class='confTab row'>
+
+	<div class="col-12">
+		<h5 class="mb-0 config_header">Channels:</h5>
+		<div class="config_section">
+			<table class="confTable table-hover">
+				<thead>
+				  <tr class="">
+					<th>Name</th>
+					<th>Enabled</th>
+					<th>Number</th>
+					<th>Icon</th>
+					<th>EPG Auto</th>
+					<th>EPG Limit</th>
+				  </tr>
+				</thead>
+				<tbody>
+				  <tr ng-repeat="x in channels">
+					<td>{{ x.name }}</td>
+					<td>{{ x.enabled }}</td>
+					<td>{{ x.number }}</td>
+					<td>{{ x.icon }}</td>
+					<td>{{ x.epgauto }}</td>
+					<td>{{ x.epglimit }}</td>
+				  </tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+
+	<div class="col-6">
+		<h5 class="mb-0 config_header">Channel Tags:</h5>
+		<div class="config_section">
+			<ul ng-repeat="x in channelTags">
+				<li>{{ x.name }}</li>
+			</ul> 
+		</div>
+
+		<h5 class="mb-0 config_header">Bouquets:</h5>
+		<div class="config_section">
+			<ul ng-repeat="x in bouquets">
+				<li>{{ x.name }}</li>
+			</ul> 
+		</div>
+
+		<h5 class="mb-0 config_header">EPG Grabber Configuration:</h5>
+		<div class="config_section">
+			<fieldset class="mb-3">
+				<legend>General Settings</legend>
+				<label>Update channel name						<input 	id=""	type="checkbox" ng-change="" ng-model="grabberConfig[0].value" ></label>
+				<label>Update channel number					<input 	id=""	type="checkbox" ng-change="" ng-model="grabberConfig[1].value" ></label>
+				<label>Update channel Icon						<input 	id=""	type="checkbox" ng-change="" ng-model="grabberConfig[2].value" ></label>
+				<label>Periodically save EPG to disk (hours)	<input 	id=""	type="number" name=""		 ng-model="grabberConfig[3].value"></label>
+				<label>Save EPG to disk after xmltv import		<input 	id=""	type="checkbox" ng-change="" ng-model="grabberConfig[4].value" ></label>
+			</fieldset>
+			<fieldset class="mb-3">
+				<legend>Internal Grabber Settings</legend>
+				<label>Cron multiline							<input 	id=""	type="text"					 ng-model="grabberConfig[5].value"></label>
+				<label>Force initial EPG grab at start-up		<input 	id=""	type="checkbox" ng-change="" ng-model="grabberConfig[6].value" ></label>
+			</fieldset>
+			<fieldset class="mb-3">
+				<legend>OTA Grabber Settings</legend>
+				<label>Cron multiline							<input 	id=""	type="text"					 ng-model="grabberConfig[8].value"></label>
+				<label>Force initial EPG grab at start-up		<input 	id=""	type="checkbox" ng-change="" ng-model="grabberConfig[7].value"></label>
+				<label>EPG scan time-out in seconds (30-7200)	<input 	id=""	type="number"				 ng-model="grabberConfig[9].value"></label>
+			</fieldset>
+		</div>
+	</div>
+
+
+	<div class="col-6">
+		<h5 class="mb-0 config_header">EPG Grabber Channels:</h5>
+		<div class="config_section">
+			<ul ng-repeat="x in grabberChannels">
+				<li>{{ x.name }}</li>
+			</ul> 
+  		</div>
+
+		<h5 class="mb-0 config_header">EPG Grabber Modules:</h5>
+		<div class="config_section">
+			<ul ng-repeat="x in grabberModules">
+				<li>{{ x.title }}</li>
+			</ul> 
+		</div>
+	</div>
+
+
+</div>

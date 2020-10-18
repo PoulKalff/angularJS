@@ -1,0 +1,104 @@
+<div class='confTab row'>
+
+	<div class="col-12">
+		<h5 class="mb-0 config_header">Access Entries:</h5>
+		<div class="config_section">
+
+			<div id="buttonSet">
+				<button type="button" class="btn btn-outline-primary btn-status" style="width: 100px">Add</button>
+	 			<button type="button" class="btn btn-outline-primary btn-status" style="width: 100px">Delete</button>
+	 			<button type="button" class="btn btn-outline-primary btn-status" style="width: 100px">Edit</button>
+			</div>
+			<table class="confTable table-hover">
+				<thead>
+				  <tr class="">
+					<th>Username</th>
+					<th>Allowed Networks</th>
+					<th>Web interface</th>
+					<th>Admin</th>
+					<th>Streaming</th>
+					<th>Limit connections</th>
+					<th>Min channel no</th>
+					<th>Max channel no</th>
+					<th>Channel tags</th>
+				  </tr>
+				</thead>
+				<tbody>
+				  <tr ng-repeat="x in configUsers">
+					<td class="" >{{ x.username }}</td>
+					<td class="" >{{ x.prefix }}</td>
+					<td class="" >{{ x.webui }}</td>
+					<td class="" >{{ x.admin }}</td>
+					<td class="" >{{ x.streaming }}</td>
+					<td class="" >{{ x.conn_limit }}</td>
+					<td class="" >{{ x.channel_max }}</td>
+					<td class="" >{{ x.channel_min }}</td>
+					<td class="" >{{ x.channel_tag }}</td>
+				  </tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+
+	<div class="col-6">
+		<h5 class="mb-0 config_header">Passwords:</h5>
+		<div class="config_section">
+
+			<div id="buttonSet">
+				<button type="button" class="btn btn-outline-primary btn-status" style="width: 100px">Add</button>
+	 			<button type="button" class="btn btn-outline-primary btn-status" style="width: 100px">Delete</button>
+	 			<button type="button" class="btn btn-outline-primary btn-status" style="width: 100px">Edit</button>
+			</div>
+
+			<table class="confTable table-hover">
+				<thead>
+				  <tr class="">
+					<th>Username</th>
+					<th>Password</th>
+					<th>Enabled</th>
+					<th>Wizard</th>
+				  </tr>
+				</thead>
+				<tbody>
+				  <tr ng-repeat="x in configPasswords">
+					<td class="" >{{ x.username }}</td>
+					<td class="" >{{ x.password }}</td>
+					<td class="" >{{ x.enabled }}</td>
+					<td class="" >{{ x.wizard }}</td>
+				  </tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<div class="col-6">
+		<h5 class="mb-0 config_header">IP Blocking Records:</h5>
+		<div class="config_section">
+
+			<div id="buttonSet">
+				<button type="button" class="btn btn-outline-primary btn-status" style="width: 100px">Add</button>
+	 			<button type="button" class="btn btn-outline-primary btn-status" style="width: 100px">Delete</button>
+	 			<button type="button" class="btn btn-outline-primary btn-status" style="width: 100px">Edit</button>
+			</div>
+
+			<table class="confTable table-hover">
+				<thead>
+				  <tr class="">
+					<th>Enabled</th>
+					<th>Network prefix</th>
+					<th>Comment</th>
+				  </tr>
+				</thead>
+				<tbody>
+				  <tr ng-repeat="x in configIpblocks">
+					<td class="" >{{ x.enabled }}</td>
+					<td class="" >{{ x.prefix }}</td>
+					<td class="" >{{ x.comment }}</td>
+				  </tr>
+				</tbody>
+			</table>
+  		</div>
+	</div>
+
+</div>

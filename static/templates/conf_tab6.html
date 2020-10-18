@@ -1,0 +1,30 @@
+<div class='confTab row'>
+	<div class="col-6">
+		<h5 class="mb-0 config_header">Digital Video Recorder Profiles:</h5>
+		<div class="config_section">
+			<ul ng-repeat="x in configProfiles">
+				<li ng-show='x.name' >{{ x.name }}</li>
+				<li ng-show='!x.name' >(default Profile)</li>
+			</ul> 
+		</div>
+	</div>
+
+	<div class="col-6">
+		<h5 class="mb-0 config_header">Timeshift Configuration:</h5>
+		<div class="config_section">
+			<fieldset class="mb-3">
+				<label>Enabled						<input 	id=""	type="checkbox" ng-change="" ng-model="timeshiftConfig[0].value" ></label>
+				<label>Maximum period (mins)		<input 	id=""	type="number"	name=""		 ng-model="timeshiftConfig[3].value"></label>
+				<label>Storage path					<input 	id=""	type="text"		name=""		 ng-model="timeshiftConfig[2].value"></label>
+				<label>Maximum size (MB)			<input 	id=""	type="number"	name=""		 ng-model="timeshiftConfig[5].value"></label>
+				<label>Maximum RAM size (MB)		<input 	id=""	type="number"	name=""		 ng-model="timeshiftConfig[6].value"></label>
+				<label>RAM only						<input 	id=""	type="checkbox" ng-change="" ng-model="timeshiftConfig[8].value" ></label>
+				<label>On-demand (no first rewind)	<input 	id=""	type="checkbox" ng-change="" ng-model="timeshiftConfig[1].value" ></label>
+				<label>Unlimited time				<input 	id=""	type="checkbox" ng-change="" ng-model="timeshiftConfig[4].value" ></label>
+				<label>Unlimited size				<input 	id=""	type="checkbox" ng-change="" ng-model="timeshiftConfig[7].value" ></label>
+				<label>Fit to RAM (cut rewind)		<input 	id=""	type="checkbox" ng-change="" ng-model="timeshiftConfig[9].value" ></label>
+				<label>Include teletext				<input 	id=""	type="checkbox" ng-change="" ng-model="timeshiftConfig[10].value" ></label>
+			</fieldset>
+		</div>
+	</div>
+</div>

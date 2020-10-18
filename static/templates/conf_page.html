@@ -1,132 +1,25 @@
-<div class='subpage_main row'>
-
-	<div class="col-6">
-		<h5 class="mb-0 config_header">User Interface:</h5>
-		<div class="config_section">
-			<fieldset>
-				<label>Number of EPG-records to fetch for each channel	<input id="noOfEpg" max="99" type="number" ng-change="noOfEpg_change()" name="NoOfEpgRecords" ng-model="noOfEpgRecordsToGet"></label>
-				<label>Prefered Recording Profile <select id="prefRecProfile" ng-change="dvrConfig_change()" ng-options="key for (key , value) in addRecordingConfigs" ng-model="dvrConfig" ></select></label>
-				<label>Sort Channels alphabetically <input id="sortChannels" type="checkbox" ng-change="sortChannels_change()" ng-model="sortChannels" ></input></label>
-			</fieldset>
-		</div>
-
-		<h5 class="mb-0 config_header">Base Settings:</h5>
-		<div class="config_section">
- 			<button type="button" class="btn btn-outline-primary btn-status">Start wizard</button></br>
-			<fieldset class="mb-3">
-				<legend>Server Settings</legend>
-				<label>Tvheadend Server Name			<input 	id=""				type="text" name="tvheadendServerName"></label>
-				<label>Configuration version			<input 	id=""				type="text" name="" disabled="true"></label>
-				<label>Last updated from				<input 	id=""				type="text" name="" disabled="true"></label>
-			</fieldset>
-
-			<fieldset class="mb-3">
-				<legend>Channel icon/Picon Settings</legend>
-				<label>Prefer picons over channel icons		<input 	id=""				type="checkbox" ng-change="" ng-model="" ></label>
-				<label>Channel icon path					<input 	id=""				type="text" ></label>
-				<label>Channel icon name scheme				<select	id=""				ng-change="dvrConfig_change()" ng-options="key for (key , value) in addRecordingConfigs" ng-model="dvrConfig" ></select></label>
-				<label>Picon path							<input	id=""				type="text" ></label>
-				<label>Picon name scheme					<input	id=""				type="text" ></label>
-			</fieldset>
-
-			<fieldset class="mb-3">
-				<legend>HTTP Servcer Settings</legend>
-				<label>Server name							<input	id=""				type="text" ></label>
-				<label>Realm name							<input	id=""				type="text" ></label>
-				<label>Authentication type					<select	id=""				ng-change="dvrConfig_change()" ng-options="key for (key , value) in addRecordingConfigs" ng-model="dvrConfig" ></select></label>
-				<label>Digest hash type						<select	id=""				ng-change="dvrConfig_change()" ng-options="key for (key , value) in addRecordingConfigs" ng-model="dvrConfig" ></select></label>
-				<label>Cookie expiration (days)				<input	id=""				type="number" ></label>
-				<label>Ticket expiration (seconds)			<input	id=""				type="number" ></label>
-				<label>PROXY protocol & X-Forwarded-For		<input	id=""				type="checkbox" ></label>
-				<label>CORS origin							<input	id=""				type="text" ></label>
-			</fieldset>
-
-			<fieldset class="mb-3">
-				<legend>HDHomerun Settings</legend>
-				<label>HDHomerun IP Address					<input	id=""				type="text" ></label>
-				<label>Local IP Address						<input	id=""				type="text" ></label>
-				<label>Local Socket Port Number				<input	id=""				type="number" ></label>
-			</fieldset>
-
-			<fieldset class="mb-3">
-				<legend>Miscellaneous Settings</legend>
-				<label>HTTP User Agent						<input	id=""				type="text" ></label>
-				<label>IPTV threads							<input	id=""				type="number" ></label>
-				<label>DSCP/TOS for streaming				<select	id=""				ng-change="dvrConfig_change()" ng-options="key for (key , value) in addRecordingConfigs" ng-model="dvrConfig" ></select></label>
-				<label>Descrambler buffer (TS packets)		<input	id=""				type="number" ></label>
-				<label>Packet backlog						<input	id=""				type="checkbox" ></label>
-				<label>DVB scan files path					<input	id=""				type="text" ></label>
-				<label>Parse HbbTV info						<input	id=""				type="checkbox" ></label>
-				<label>Update time							<input	id=""				type="checkbox" ></label>
-				<label>Enable NTP driver					<input	id=""				type="checkbox" ></label>
-				<label>Update tolerance (ms)				<input	id=""				type="number" ></label>
-			</fieldset>
-		</div>
+<div class='subpage_conf'>
+	<div class="btn-group btn-group-lg btn-block">
+		<button type="button" class="btn btn-primary btn-square" ng-click="selectTab(1)">General</button>
+		<button type="button" class="btn btn-primary btn-square" ng-click="selectTab(2)">Users</button>
+		<button type="button" class="btn btn-primary btn-square" ng-click="selectTab(3)">DVB Inputs</button>
+		<button type="button" class="btn btn-primary btn-square" ng-click="selectTab(4)">Channel / EPG</button>
+		<button type="button" class="btn btn-primary btn-square" ng-click="selectTab(5)">Stream</button>
+		<button type="button" class="btn btn-primary btn-square" ng-click="selectTab(6)">Recording</button>
+		<button type="button" class="btn btn-primary btn-square" ng-click="selectTab(7)">CAs</button>
+		<button type="button" class="btn btn-primary btn-square" ng-click="selectTab(8)">Debugging</button>
 	</div>
 
-	<div class="col-6">
-		<h5 class="mb-0 config_header">Image Cache:</h5>
-		<div class="config_section">
-			<button style="	margin-bottom: 15px;" type="button" class="btn btn-outline-primary btn-status">Clean image (icon) cache</button></br>
- 			<button type="button" class="btn btn-outline-primary btn-status">Re-fetch images</button></br>
-			<fieldset class="mb-3">
-				<label>Enabled							<input 	id=""				type="checkbox" ng-change="" ng-model="" ></label>
-				<label>Ignore invalid SSL certificate	<input 	id=""				type="checkbox" ng-change="" ng-model="" ></label>
-				<label>Expire Time						<input	id=""				type="number" ></label>
-				<label>Re-fetch period (hours)			<input	id=""				type="number" ></label>
-				<label>Re-try period (hours)			<input	id=""				type="number" ></label>
-			</fieldset>
-  		</div>
-		<h5 class="mb-0 config_header">SAT>IP Server:</h5>
-		<div class="config_section">
- 			<button type="button" class="btn btn-outline-primary btn-status">Discover SAT>IP servers</button></br>
- 			<fieldset class="mb-3 mt-0">
-				<legend>General Settings</legend>
-				<label>Server UUID:							<input	id=""				type="text" disabled="true"></label>
-				<label>RTSP port (554 or 9983, 0 = disable)	<input	id=""				type="number" ></label>
-				<label>Anonymize							<input 	id=""				type="checkbox" ng-change="" ng-model="" ></label>
-				<label>Disable UPnP							<input 	id=""				type="checkbox" ng-change="" ng-model="" ></label>
-				<label>Subscription weight					<input	id=""				type="number" ></label>
-				<label>Accept remote subscription weight	<input 	id=""				type="checkbox" ng-change="" ng-model="" ></label>
-				<label>Descramble services (limit per mux)	<input	id=""				type="number" ></label>
-				<label>Mux handling							<select	id=""				ng-change="dvrConfig_change()" ng-options="key for (key , value) in addRecordingConfigs" ng-model="dvrConfig" ></select></label>
-				<label>RTP over TCP payload					<select	id=""				ng-change="dvrConfig_change()" ng-options="key for (key , value) in addRecordingConfigs" ng-model="dvrConfig" ></select></label>
-			</fieldset>
-			<fieldset class="mb-3">
-				<legend>NAT Settings</legend>
-				<label>External IP (NAT)					<input	id=""				type="text" disabled="true"></label>
-				<label>External RTSP port (NAT)			 	<input	id=""				type="number" ></label>
-				<label>Force RTSP announcement (external)	<input 	id=""				type="checkbox" ng-change="" ng-model="" ></label>
-				<label>RTP Local bind IP address			<input	id=""				type="text" disabled="true"></label>
-			</fieldset>
-			<fieldset class="mb-3">
-				<legend>Signal Settings</legend>
-				<label>IPTV signal level				 	<input	id=""				type="number" ></label>
-				<label>Force signal level				 	<input	id=""				type="number" ></label>
-			</fieldset>
-			<fieldset class="mb-3">
-				<legend>Exported Tuner(s) Settings</legend>
-				<label>DVB-S							 	<input	id=""				type="number" ></label>
-				<label>DVB-S2							 	<input	id=""				type="number" ></label>
-				<label>DVB-T							 	<input	id=""				type="number" ></label>
-				<label>DVB-T2							 	<input	id=""				type="number" ></label>
-				<label>DVB-C							 	<input	id=""				type="number" ></label>
-				<label>DVB-C2							 	<input	id=""				type="number" ></label>
-				<label>ATSC-T							 	<input	id=""				type="number" ></label>
-				<label>ATSC-C							 	<input	id=""				type="number" ></label>
-				<label>Max Sessions		 					<input	id=""				type="number" ></label>
-				<label>Max User connections					<input	id=""				type="number" ></label>
-			</fieldset>
-			<fieldset class="mb-3">
-				<legend>Miscellaneous Settings</legend>
-				<label>Rewrite PMT							<input 	id=""	type="checkbox" ng-change="" ng-model="" ></label>
-				<label>Disable X_SATIPM3U tag				<input 	id=""	type="checkbox" ng-change="" ng-model="" ></label>
-				<label>Disable RTP/AVP/TCP support			<input 	id=""	type="checkbox" ng-change="" ng-model="" ></label>
-				<label>Restrict "pids=all"					<input 	id=""	type="checkbox" ng-change="" ng-model="" ></label>
-				<label>Drop "fe=" parameter					<input 	id=""	type="checkbox" ng-change="" ng-model="" ></label>
-			 </fieldset>
-		</div>
-	</div>
+	<ng-include src="selectedTab" />
 
 
 </div>
+
+
+
+
+
+
+
+
+
