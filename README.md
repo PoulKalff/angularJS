@@ -7,6 +7,6 @@ Must be located in:<br>
 	IP:9981/static/angularJS/index.html<br>
 
 Redirected in Apache as: <br>
-        <Location "/hts">
-                Redirect permanent "http://192.168.1.8:9981/static/angularJS/index.html"
-        </Location>
+#        <Location "/hts"> 
+#                Redirect permanent "http://192.168.1.8:9981/static/angularJS/index.html"
+#        </Location>
