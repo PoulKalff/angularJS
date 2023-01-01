@@ -2,7 +2,7 @@
 app.controller('dvrController', function($scope, $http, $filter) {
 	var sideNavDiv = document.getElementsByClassName("sidenav")[0];
 	var mainDiv = document.getElementsByClassName("main")[0];
-	if (sideNavDiv['className'] == "sidenav sidenav_small") 
+	if (sideNavDiv['className'] == "sidenav sidenav_small")
 		angular.element(mainDiv).addClass("main_big");
 	else
 		angular.element(mainDiv).removeClass("main_big");
@@ -10,19 +10,20 @@ app.controller('dvrController', function($scope, $http, $filter) {
 
 	// loads or reloads the page data
 	loadDvrData = function(obj) {
-		$http.get("/api/dvr/entry/grid")
+		$http.get("/api/dvr/entry/grid?limit=500")
 			.then(function (response)
 				{
 					$scope.weekdays = { 1:'Mon', 2:'Tue', 3:'Wed', 4:'Thu', 5:'Fri', 6:'Sat', 7:'Sun'};
 					$scope.dvrData = response.data.entries;
 					$scope.selectedItems = [];
+					$scope.recordingsTotal = response.data.total;
 					$scope.selectedCat =
 					{
-						completed:		0,
+						completed:	0,
 						fileMissing:	0,
-						scheduled:		0,	
-						timeMissed:		0,
-						running:		0 
+						scheduled:	0,
+						timeMissed:	0,
+						running:	0
 					};
 					// uncheck all checkboxes
 					angular.forEach($scope.dvrData, function (item) {
@@ -38,16 +39,17 @@ app.controller('dvrController', function($scope, $http, $filter) {
 						$scope.selectedTimers = [];
 						angular.forEach(response2.data.entries, function (item) {
 							item['type'] = 'time';
-							$scope.dvrTimers.push(item); 
+							$scope.dvrTimers.push(item);
 						});
 					})
 					$http.get("/api/dvr/autorec/grid")
 						.then(function (response3)
 						{
+							$scope.timersTotal = response3.data.total;
 							angular.forEach(response3.data.entries, function (item) {
 								item['type'] = 'epg';
 								item['stop'] = item['start_window']; // translate for compatiability
-								$scope.dvrTimers.push(item); 
+								$scope.dvrTimers.push(item);
 							});
 						});
 	}
@@ -289,7 +291,7 @@ app.controller('dvrController', function($scope, $http, $filter) {
 		var config_name  = (document.getElementById("inputConfig").selectedOptions[0].value).split(":")[1];
 		// Convert data into rawData
 		var rawData = 	{
-							"disp_title": disp_title, 
+							"disp_title": disp_title,
 							"disp_extratext": disp_extratext,
 							"channel": channel,
 							"start": start,
@@ -353,7 +355,7 @@ app.controller('dvrController', function($scope, $http, $filter) {
 	}
 
 
-	// BUTTON : Stops a running or cancels a scheduled recording 
+	// BUTTON : Stops a running or cancels a scheduled recording
 	$scope.stopButton = function() {
 		angular.forEach($scope.selectedItems, function (item) {
 			if (item.status === 'Running')
@@ -366,7 +368,7 @@ app.controller('dvrController', function($scope, $http, $filter) {
 	}
 
 
-	// BUTTON : Toggles Enable/Disable of scheduled recordings 
+	// BUTTON : Toggles Enable/Disable of scheduled recordings
 	$scope.enableDisableButton = function() {
 		angular.forEach($scope.selectedItems, function (item) {
 			var url = '/api/idnode/load';
@@ -399,7 +401,7 @@ app.controller('dvrController', function($scope, $http, $filter) {
 	}
 
 
-	// BUTTON : Show the dialouge for adding 
+	// BUTTON : Show the dialouge for adding
 	$scope.addRecordingButton = function() {
 		document.getElementById("overlayAddRecording").style.display = "block";
 	}
@@ -536,7 +538,7 @@ app.controller('dvrController', function($scope, $http, $filter) {
 		var retention = document.getElementsByName("timerRetention")[0].value;
 		// Convert data into rawData
 		var rawData = 	{
-							"name": name, 
+							"name": name,
 							"channel": channel,
 							"start": start,
 							"stop": stop,
