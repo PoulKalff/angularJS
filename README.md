@@ -6,4 +6,7 @@ Must be located in:<br>
 ..and called as:<br>
 	IP:9981/static/angularJS/index.html<br>
 
-TODO: mask the URL to a more logical one, like "IP:9981/gui.html" or whatever
+Redirected in Apache as: <br>
+        <Location "/hts">
+                Redirect permanent "http://192.168.1.8:9981/static/angularJS/index.html"
+        </Location>
