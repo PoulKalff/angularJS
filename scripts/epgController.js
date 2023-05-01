@@ -4,7 +4,7 @@ app.controller("epgController", function ($scope, $http, $interval, $timeout, $c
 	var sideNavDiv = document.getElementsByClassName("sidenav")[0];
 	var bottomDiv = document.getElementById("epg_bottom");
 	var mainDiv = document.getElementsByClassName("main")[0];
-	if (sideNavDiv['className'] == "sidenav sidenav_small") 
+	if (sideNavDiv['className'] == "sidenav sidenav_small")
 		angular.element(mainDiv).addClass("main_big");
 	else
 		angular.element(mainDiv).removeClass("main_big");
@@ -81,9 +81,9 @@ app.controller("epgController", function ($scope, $http, $interval, $timeout, $c
 		var bottomDiv = document.getElementById("epg_bottom");
 		var objStart = new Date(epgUnit['data']['start']);
 		var objStop = new Date(epgUnit['data']['stop']);
-		var timeArray = [	(objStart.getHours()).toString(), 
-							(objStart.getMinutes()).toString(), 
-							(objStop.getHours()).toString(), 
+		var timeArray = [	(objStart.getHours()).toString(),
+							(objStart.getMinutes()).toString(),
+							(objStop.getHours()).toString(),
 							(objStop.getMinutes()).toString()
 						];
 		if (timeArray[0].length == 1) {timeArray[0] = '0' + timeArray[0]}
@@ -194,7 +194,7 @@ app.controller("epgController", function ($scope, $http, $interval, $timeout, $c
 			angular.element(nyDiv).addClass("selected");
 			$scope.fillBotomEPG(epgUnit);
 			// correct the windows scroll
-			nyDiv.scrollIntoView(); 
+			nyDiv.scrollIntoView();
 		}
 	};
 
@@ -335,10 +335,10 @@ app.controller("epgController", function ($scope, $http, $interval, $timeout, $c
 								data : row
 							 };
 				row["title"] = "No EPG found for this Channel";
-				row["channelIcon"] = "/static/angularJS/static/img/logosmall.png";
+				row["channelIcon"] = "/static/webUI/static/img/logosmall.png";
 				epgLine.push(record);
 			}
-			else 
+			else
 			{
 				angular.forEach(data["data"]["entries"], function (row)
 				{
@@ -418,7 +418,7 @@ app.controller("epgController", function ($scope, $http, $interval, $timeout, $c
 	$scope.noOfEpgRecordsToGet = parseInt(cookieA);
 	var cookieB = $cookies.get('preferedDvrConfig');
 	$scope.dvrConfig = $cookies.get('preferedDvrConfig');
-	if (!angular.isDefined($scope.dvrConfig)) { 
+	if (!angular.isDefined($scope.dvrConfig)) {
 		// load first available  config
 		$http.get("/api/dvr/config/grid")
 			.then(function (reply) 	{ $scope.dvrConfig = reply.data.entries[0].uuid; })
